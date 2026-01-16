@@ -1,0 +1,20 @@
+backend: Qt5Agg
+figure.figsize: 13, 13
+figure.dpi: 100
+# figure.autolayout: True
+font.size: 28
+
+legend.fontsize: 30
+legend.columnspacing: 0.3
+
+axes.labelsize: 30
+
+xtick.labelsize: 30
+ytick.labelsize: 30
+
+
+lines.linewidth: 2.5
+
+font.family: Helvetica
+text.usetex: True
+text.latex.preamble: \usepackage{amsmath} \usepackage{amsfonts} \usepackage{lmodern} \usepackage{bm}

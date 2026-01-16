@@ -1,0 +1,111 @@
+[tool.poetry]
+name = "collective-phase-amplitude"
+version = "1.0.0"
+description = "Phase-amplitude reduction and optimal phase locking of collectively oscillating networks"
+authors = [
+    "Petar Mircheski",
+    "Jinjie Zhu",
+    "Hiroya Nakao"
+]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/PetarMirceski/collective_phase_amplitude"
+keywords = [
+    "oscillators",
+    "phase reduction",
+    "floquet analysis",
+    "optimal control",
+    "synchronization",
+    "nonlinear dynamics"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+packages = [
+    { include = "oscillators" },
+    { include = "solvers" },
+    { include = "utils" },
+    { include = "config" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+numpy = "^2.0"
+tqdm = "^4.66"
+matplotlib = "^3.9"
+numba = "^0.60"
+scipy = "^1.14"
+joblib = "^1.4"
+networkx = "^3.3"
+imageio = "^2.34"
+pyqt5 = "^5.15.11"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.14"
+mypy = "^1.10"
+
+[tool.poetry.group.docs.dependencies]
+mkdocs-material = "^9.5"
+mkdocstrings = { version = "^0.25", extras = ["python"] }
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+exclude = [".venv", "build", "dist"]
+
+[tool.ruff.lint]
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # Pyflakes
+    "I",      # isort
+    "B",      # flake8-bugbear
+    "C4",     # flake8-comprehensions
+    "UP",     # pyupgrade
+]
+ignore = ["E501"]  # line too long (handled by formatter)
+
+[tool.ruff.lint.isort]
+known-first-party = ["oscillators", "solvers", "utils", "config"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.pytest.ini_options]
+testpaths = ["tests/"]
+
+[tool.mypy]
+python_version = "3.12"
+plugins = ["numpy.typing.mypy_plugin"]
+
+# Import discovery
+ignore_missing_imports = true
+follow_imports = "normal"
+
+# Untyped definitions and calls
+disallow_untyped_decorators = false
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+
+# Warnings
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_return_any = true
+warn_unreachable = true
+
+# None and Optional handling
+no_implicit_optional = true
+
+# Miscellaneous strictness flags
+strict_equality = true
